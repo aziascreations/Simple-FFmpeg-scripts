@@ -49,11 +49,18 @@ Simply find the script and video you want to use, and drag-and-drop the video fi
 
 ## Scripts
 
+### compress-x264-crf24
+
+This script is used to compress mp4 [and/or mkv] file[s] with the x264 codec.<br>
+<b>This should be used if your hardware doesn't support x265</b>
+
+Internal command: `ffmpeg -i "%1" -vcodec libx264 -crf 24 %~n1.cx264.mp4`
+
 ### compress-x265-crf24
 
 This script is used to compress mp4 [and/or mkv] file[s] with the x265 codec.
 
-Internal command: `ffmpeg -i "%1" -vcodec libx265 -crf 24 %~n1.compressed.mp4`
+Internal command: `ffmpeg -i "%1" -vcodec libx265 -crf 24 %~n1.cx265.mp4`
 
 ### convert-mkv-to-mp4
 
