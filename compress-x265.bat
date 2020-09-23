@@ -9,7 +9,7 @@ call %~d0%~p0ffmpeg-config.bat
 echo Operation summary:
 echo * Input:   %1
 echo * Output:  %~d1%~p1%~n1.cx265.mp4
-echo * Command: %FFMPEG% -i "%1" -vcodec libx265 %FFMPEG_VERBOSE_COMMAND% -crf 24 "%~d1%~p1%~n1.cx265.mp4"
+echo * Command: %FFMPEG% -i "%1" -vcodec libx265 %FFMPEG_VERBOSE_COMMAND% -crf %FFMPEG_CRF_X26X% "%~d1%~p1%~n1.cx265.mp4"
 
 if exist %~d1%~p1%~n1.cx265.mp4 (
 	echo * Output file already exists :(
@@ -25,7 +25,7 @@ goto choice
 
 :convert
 echo.
-%FFMPEG% -i "%1" -vcodec libx265 %FFMPEG_VERBOSE_COMMAND% -crf 24 "%~d1%~p1%~n1.cx265.mp4"
+%FFMPEG% -i "%1" -vcodec libx265 %FFMPEG_VERBOSE_COMMAND% -crf %FFMPEG_CRF_X26X% "%~d1%~p1%~n1.cx265.mp4"
 goto end
 
 :error-no-arg

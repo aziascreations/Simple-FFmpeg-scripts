@@ -28,11 +28,17 @@ goto verbose-no
 :verbose-yes
 set FFMPEG_VERBOSE_COMMAND=-loglevel warning
 echo Using reduced verbosity
-goto end
+goto compression-params
 
 :verbose-no
 set FFMPEG_VERBOSE_COMMAND=
 echo Using full verbosity
+goto compression-params
+
+
+:: The range of the quantizer scale is 0-51: where 0 is lossless, 23 is default, and 51 is worst possible. A lower value is a higher quality
+:compression-params
+set FFMPEG_CRF_X26X=24
 goto end
 
 
