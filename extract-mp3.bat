@@ -1,6 +1,6 @@
 @echo off
 
-echo FFmpeg MKV to MP4
+echo FFmpeg MP3 extractor
 if [%1] == [] goto error-no-arg
 echo.
 
@@ -8,10 +8,10 @@ call %~d0%~p0ffmpeg-config.bat
 
 echo Operation summary:
 echo * Input:  %1
-echo * Output: %~d1%~p1%~n1.mp4
-echo * Command: %FFMPEG% -i %1 %FFMPEG_VERBOSE_COMMAND% -codec copy "%~d1%~p1%~n1.mp4"
+echo * Output: %~d1%~p1%~n1.mp3
+echo * Command: %FFMPEG% -i %1 %FFMPEG_VERBOSE_COMMAND% "%~d1%~p1%~n1.mp3"
 
-if exist "%~d1%~p1%~n1.mp4" (
+if exist "%~d1%~p1%~n1.mp3" (
 	echo * Output file already exists :(
 	goto end
 )
@@ -25,7 +25,8 @@ goto choice
 
 :convert
 echo.
-%FFMPEG% -i %1 %FFMPEG_VERBOSE_COMMAND% -codec copy "%~d1%~p1%~n1.mp4"
+%FFMPEG% -i %1 %FFMPEG_VERBOSE_COMMAND% "%~d1%~p1%~n1.mp3"
+:: -vn -acodec copy 
 goto end
 
 :error-no-arg
